@@ -41,28 +41,87 @@
 //   {id: 4, name: "Jane", age: 17, hasJob: false}
 // ]));
 
-interface Employee {
-  id: number;
-  name: string;
-  age: number;
-  hasJob: boolean;
-}
+// interface Employee {
+//   id: number;
+//   name: string;
+//   age: number;
+//   hasJob: boolean;
+// }
 
-const jsonData = `[
-  {"id": 1, "name": "Sara", "age": 18, "hasJob": false},
-  {"id": 2, "name": "Ben", "age": 19, "hasJob": false},
-  {"id": 3, "name": "Tom", "age": 25, "hasJob": true},
-  {"id": 4, "name": "Jane", "age": 17, "hasJob": false}
+// const jsonData = `[
+//   {"id": 1, "name": "Sara", "age": 18, "hasJob": false},
+//   {"id": 2, "name": "Ben", "age": 19, "hasJob": false},
+//   {"id": 3, "name": "Tom", "age": 25, "hasJob": true},
+//   {"id": 4, "name": "Jane", "age": 17, "hasJob": false}
+// ]`;
+
+// const employeesArray: Employee[] = JSON.parse(jsonData);
+
+// console.log(employeesArray);
+
+// const onlyUnemployed = employeesArray.filter((employee) => employee.age >= 18 && employee.hasJob === false);
+
+// console.log(onlyUnemployed);
+
+// const convertedData = JSON.stringify(onlyUnemployed);
+
+// console.log(convertedData);
+
+
+const apiResponse = `[
+  {"id": 1, "name": "Sara", "income": 35000, "region": "Oslo"},
+  {"id": 2, "name": "Ben", "income": 28000, "region": "Bergen"},
+  {"id": 3, "name": "Tom", "income": 52000, "region": "Oslo"},
+  {"id": 4, "name": "Jane", "income": 19000, "region": "Oslo"},
+  {"id": 5, "name": "Erik", "income": 41000, "region": "Bergen"}
 ]`;
 
-const employeesArray: Employee[] = JSON.parse(jsonData);
+interface Applicant {
+  id: number;
+  name: string;
+  income: number;
+  region: string;
+}
 
-console.log(employeesArray);
+class NAVSystem {
+  applicants: Applicant[]
 
-const onlyUnemployed = employeesArray.filter((employee) => employee.age >= 18 && employee.hasJob === false);
+  constructor(){
+    this.applicants = [];
+  }
 
-console.log(onlyUnemployed);
+  loadData(json: string): void {
+    this.applicants = JSON.parse(json);
+  }
 
-const convertedData = JSON.stringify(onlyUnemployed);
+  getOsloApplicants(): Applicant[] {
+    return this.applicants.filter((applicant) => applicant.region === "Oslo");
+  }
 
-console.log(convertedData);
+  getAverageIncome(): number {
+    const initialValue = 0;
+    const sumIncome = this.applicants.reduce((sum, currentValue) => sum + currentValue.income, initialValue);
+    const averageIncome = sumIncome / this.applicants.length;
+    return averageIncome;
+  }
+
+  getLowIncomeApplicants(threshold: number): Applicant[] {
+    return this.applicants.filter((applicant) => applicant.income < threshold);
+  }
+}
+
+const system = new NAVSystem();
+system.loadData(apiResponse);
+
+const getOsloApplicants = system.getOsloApplicants();
+
+const getAverageIncome = system.getAverageIncome();
+
+const getLowIncomeApplicants = system.getLowIncomeApplicants(30000);
+
+console.log(system);
+console.log(getOsloApplicants);
+console.log(getAverageIncome);
+console.log(getLowIncomeApplicants);
+
+
