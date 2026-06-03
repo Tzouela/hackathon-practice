@@ -1,11 +1,4 @@
-interface Citizen {
-  id: number;
-  name: string;
-  age: number;
-  hasJob: boolean;
-}
-
-function getUnemployedAdults (citizens: Citizen[]): Citizen[] {
+function getUnemployedAdults (citizens){
   return citizens.filter((citizen) => citizen.age >= 18 && citizen.hasJob === false);
 }
 
@@ -16,7 +9,7 @@ console.log(getUnemployedAdults([
   {id: 4, name: "Jane", age: 17, hasJob: false}
 ]));
 
-function getAverageAge(citizens: Citizen[]): number {
+function getAverageAge(citizens){
   const initialValue = 0;
   const sumAges = citizens.reduce((sum, currentValue) => sum + currentValue.age, initialValue);
   const averageAge = sumAges / citizens.length;
@@ -30,7 +23,7 @@ console.log(getAverageAge([
   {id: 4, name: "Jane", age: 17, hasJob: false}
 ]));
 
-function sortByAge (citizens: Citizen[]): Citizen[] {
+function sortByAge (citizens){
   return citizens.toSorted((a, b) => a.age - b.age);
 }
 
@@ -41,12 +34,6 @@ console.log(sortByAge([
   {id: 4, name: "Jane", age: 17, hasJob: false}
 ]));
 
-interface Employee {
-  id: number;
-  name: string;
-  age: number;
-  hasJob: boolean;
-}
 
 const jsonData = `[
   {"id": 1, "name": "Sara", "age": 18, "hasJob": false},
@@ -55,7 +42,7 @@ const jsonData = `[
   {"id": 4, "name": "Jane", "age": 17, "hasJob": false}
 ]`;
 
-const employeesArray: Employee[] = JSON.parse(jsonData);
+const employeesArray= JSON.parse(jsonData);
 
 console.log(employeesArray);
 
@@ -76,36 +63,29 @@ const apiResponse = `[
   {"id": 5, "name": "Erik", "income": 41000, "region": "Bergen"}
 ]`;
 
-interface Applicant {
-  id: number;
-  name: string;
-  income: number;
-  region: string;
-}
 
 class NAVSystem {
-  applicants: Applicant[]
 
   constructor(){
     this.applicants = [];
   }
 
-  loadData(json: string): void {
+  loadData(json){
     this.applicants = JSON.parse(json);
   }
 
-  getOsloApplicants(): Applicant[] {
+  getOsloApplicants(){
     return this.applicants.filter((applicant) => applicant.region === "Oslo");
   }
 
-  getAverageIncome(): number {
+  getAverageIncome(){
     const initialValue = 0;
     const sumIncome = this.applicants.reduce((sum, currentValue) => sum + currentValue.income, initialValue);
     const averageIncome = sumIncome / this.applicants.length;
     return averageIncome;
   }
 
-  getLowIncomeApplicants(threshold: number): Applicant[] {
+  getLowIncomeApplicants(threshold){
     return this.applicants.filter((applicant) => applicant.income < threshold);
   }
 }
@@ -126,7 +106,7 @@ console.log(getLowIncomeApplicants);
 
 
 
-function regionExists (regions: string[], region: string): boolean {
+function regionExists (regions, region){
   return regions.includes(region);
 }
 
