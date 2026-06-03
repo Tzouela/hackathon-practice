@@ -68,60 +68,67 @@
 // console.log(convertedData);
 
 
-const apiResponse = `[
-  {"id": 1, "name": "Sara", "income": 35000, "region": "Oslo"},
-  {"id": 2, "name": "Ben", "income": 28000, "region": "Bergen"},
-  {"id": 3, "name": "Tom", "income": 52000, "region": "Oslo"},
-  {"id": 4, "name": "Jane", "income": 19000, "region": "Oslo"},
-  {"id": 5, "name": "Erik", "income": 41000, "region": "Bergen"}
-]`;
+// const apiResponse = `[
+//   {"id": 1, "name": "Sara", "income": 35000, "region": "Oslo"},
+//   {"id": 2, "name": "Ben", "income": 28000, "region": "Bergen"},
+//   {"id": 3, "name": "Tom", "income": 52000, "region": "Oslo"},
+//   {"id": 4, "name": "Jane", "income": 19000, "region": "Oslo"},
+//   {"id": 5, "name": "Erik", "income": 41000, "region": "Bergen"}
+// ]`;
 
-interface Applicant {
-  id: number;
-  name: string;
-  income: number;
-  region: string;
+// interface Applicant {
+//   id: number;
+//   name: string;
+//   income: number;
+//   region: string;
+// }
+
+// class NAVSystem {
+//   applicants: Applicant[]
+
+//   constructor(){
+//     this.applicants = [];
+//   }
+
+//   loadData(json: string): void {
+//     this.applicants = JSON.parse(json);
+//   }
+
+//   getOsloApplicants(): Applicant[] {
+//     return this.applicants.filter((applicant) => applicant.region === "Oslo");
+//   }
+
+//   getAverageIncome(): number {
+//     const initialValue = 0;
+//     const sumIncome = this.applicants.reduce((sum, currentValue) => sum + currentValue.income, initialValue);
+//     const averageIncome = sumIncome / this.applicants.length;
+//     return averageIncome;
+//   }
+
+//   getLowIncomeApplicants(threshold: number): Applicant[] {
+//     return this.applicants.filter((applicant) => applicant.income < threshold);
+//   }
+// }
+
+// const system = new NAVSystem();
+// system.loadData(apiResponse);
+
+// const getOsloApplicants = system.getOsloApplicants();
+
+// const getAverageIncome = system.getAverageIncome();
+
+// const getLowIncomeApplicants = system.getLowIncomeApplicants(30000);
+
+// console.log(system);
+// console.log(getOsloApplicants);
+// console.log(getAverageIncome);
+// console.log(getLowIncomeApplicants);
+
+function regionExists (regions: string[], region: string): boolean {
+  return regions.includes(region);
 }
 
-class NAVSystem {
-  applicants: Applicant[]
+const regions = ["Oslo", "Bergen", "Oslo", "Tromsø", "Bergen"];
 
-  constructor(){
-    this.applicants = [];
-  }
-
-  loadData(json: string): void {
-    this.applicants = JSON.parse(json);
-  }
-
-  getOsloApplicants(): Applicant[] {
-    return this.applicants.filter((applicant) => applicant.region === "Oslo");
-  }
-
-  getAverageIncome(): number {
-    const initialValue = 0;
-    const sumIncome = this.applicants.reduce((sum, currentValue) => sum + currentValue.income, initialValue);
-    const averageIncome = sumIncome / this.applicants.length;
-    return averageIncome;
-  }
-
-  getLowIncomeApplicants(threshold: number): Applicant[] {
-    return this.applicants.filter((applicant) => applicant.income < threshold);
-  }
-}
-
-const system = new NAVSystem();
-system.loadData(apiResponse);
-
-const getOsloApplicants = system.getOsloApplicants();
-
-const getAverageIncome = system.getAverageIncome();
-
-const getLowIncomeApplicants = system.getLowIncomeApplicants(30000);
-
-console.log(system);
-console.log(getOsloApplicants);
-console.log(getAverageIncome);
-console.log(getLowIncomeApplicants);
-
-
+console.log(regionExists(regions, "Tromsø"));
+console.log(regionExists(regions, "Stavanger"));
