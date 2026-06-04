@@ -1,0 +1,8 @@
+[
+  {"id": 1, "name": "Sara Hansen", "age": 28, "income": 24000, "status": "pending", "region": "Oslo"},
+  {"id": 2, "name": "Tom Berg", "age": 35, "income": 52000, "status": "pending", "region": "Bergen"},
+  {"id": 3, "name": "Anna Lie", "age": 22, "income": 18000, "status": "approved", "region": "Oslo"},
+  {"id": 4, "name": "Erik Dahl", "age": 45, "income": 31000, "status": "pending", "region": "Tromsø"},
+  {"id": 5, "name": "Lena Ås", "age": 19, "income": 15000, "status": "rejected", "region": "Oslo"},
+  {"id": 6, "name": "Kari Moe", "age": 31, "income": 28000, "status": "pending", "region": "Bergen"}
+]

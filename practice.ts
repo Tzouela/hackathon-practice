@@ -167,33 +167,33 @@
 
 
 
-interface Applicant {
-  id: number;
-  name: string;
-  status: string;
-  income: number;
-}
+// interface Applicant {
+//   id: number;
+//   name: string;
+//   status: string;
+//   income: number;
+// }
 
-interface API {
-  status: string;
-  data: Applicant[];
-}
+// interface API {
+//   status: string;
+//   data: Applicant[];
+// }
 
-const apiResponse = `{
-  "status": "success",
-  "data": [
-    {"id": 1, "name": "Sara", "status": "pending", "income": 32000},
-    {"id": 2, "name": "Tom", "status": "approved", "income": 45000},
-    {"id": 3, "name": "Anna", "status": "pending", "income": 28000},
-    {"id": 4, "name": "John", "status": "rejected", "income": 51000},
-    {"id": 5, "name": "Lena", "status": "pending", "income": 38000}
-  ]
-}`;
+// const apiResponse = `{
+//   "status": "success",
+//   "data": [
+//     {"id": 1, "name": "Sara", "status": "pending", "income": 32000},
+//     {"id": 2, "name": "Tom", "status": "approved", "income": 45000},
+//     {"id": 3, "name": "Anna", "status": "pending", "income": 28000},
+//     {"id": 4, "name": "John", "status": "rejected", "income": 51000},
+//     {"id": 5, "name": "Lena", "status": "pending", "income": 38000}
+//   ]
+// }`;
 
 
-const parsedResponse: API = JSON.parse(apiResponse);
-const data: Applicant[] = parsedResponse.data;
-const applicants: Applicant[] = data.filter((d) => d.status === "pending" && d.income > 30000);
+// const parsedResponse: API = JSON.parse(apiResponse);
+// const data: Applicant[] = parsedResponse.data;
+// const applicants: Applicant[] = data.filter((d) => d.status === "pending" && d.income > 30000);
 
-console.log(applicants);
+// console.log(applicants);
 
