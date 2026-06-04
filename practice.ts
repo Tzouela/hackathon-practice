@@ -136,3 +136,64 @@
 
 // console.log(regionExists(regions, "Tromsø"));
 // console.log(regionExists(regions, "Stavanger"));
+
+
+// interface Employee {
+//   id: number;
+//   name: string;
+//   salary: number;
+// }
+
+// function getHighEarners (employees: Employee[]): Employee[] {
+//   return employees.filter((employee) => employee.salary > 40000);
+// }
+
+// function getHighEarners (employees: Employee[]): Employee[] {
+//   let highPaidEmployee: Employee[] = [];
+//   for (let i = 0; i < employees.length; i++) {
+//     if (employees[i].salary > 40000) {
+//       highPaidEmployee.push(employees[i]);
+//     }
+//   }
+//   return  highPaidEmployee;
+// }
+
+// console.log(getHighEarners([
+//   {id: 1, name: "Sara", salary: 35000},
+//   {id: 2, name: "Tom", salary: 45000},
+//   {id: 3, name: "Anna", salary: 40000},
+//   {id: 4, name: "John", salary: 55000}
+// ]));
+
+
+
+interface Applicant {
+  id: number;
+  name: string;
+  status: string;
+  income: number;
+}
+
+interface API {
+  status: string;
+  data: Applicant[];
+}
+
+const apiResponse = `{
+  "status": "success",
+  "data": [
+    {"id": 1, "name": "Sara", "status": "pending", "income": 32000},
+    {"id": 2, "name": "Tom", "status": "approved", "income": 45000},
+    {"id": 3, "name": "Anna", "status": "pending", "income": 28000},
+    {"id": 4, "name": "John", "status": "rejected", "income": 51000},
+    {"id": 5, "name": "Lena", "status": "pending", "income": 38000}
+  ]
+}`;
+
+
+const parsedResponse: API = JSON.parse(apiResponse);
+const data: Applicant[] = parsedResponse.data;
+const applicants: Applicant[] = data.filter((d) => d.status === "pending" && d.income > 30000);
+
+console.log(applicants);
+
